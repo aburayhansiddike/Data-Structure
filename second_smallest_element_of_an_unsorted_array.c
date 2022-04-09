@@ -40,7 +40,7 @@ int main(){
       if(secondSmallestElement == -1){
            printf("The input is not valid\n");
       }else{
-            printf("The second largest element is : %d\n" , secondSmallestElement);
+            printf("The second smallest element is : %d\n" , secondSmallestElement);
       }
 
       return 0 ;
