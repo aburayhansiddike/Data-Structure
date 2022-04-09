@@ -15,7 +15,7 @@ int FindSecondLargestElement(int a[] , int n){
        }
 
        for(int i = 0 ; i < n ;  i += 1){
-             if(a[i] > secondMaxElement && a[i] < firstMaxElement){
+             if(a[i] > secondMaxElement && a[i] <= firstMaxElement){
                     secondMaxElement = a[i];
              }
        }
