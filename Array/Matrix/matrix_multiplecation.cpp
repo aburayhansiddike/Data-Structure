@@ -39,7 +39,7 @@ int main(){
     cout << "New matrix is : \n" ;
 
     for(int i = 0 ; i < row1 ; i += 1){
-        for(int j = 0 ; j < col1 ; j += 1){
+        for(int j = 0 ; j < col2 ; j += 1){
             cout << newMatrix[i][j] << ' ' ;
         }
         cout << '\n' ;
