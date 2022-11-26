@@ -22,6 +22,7 @@ int getCalculatedValue(int firstOperator , int secondOperator , char sign){
 int posfixEvaluation(string expression){
        stack<int > answer ;
        for(int i = 0 ; i < expression.size() ; i += 1){
+
              if(expression[i] >= '0' and expression[i] <= '9'){
                   answer.push(expression[i] - '0') ;
              }else{
@@ -30,7 +31,7 @@ int posfixEvaluation(string expression){
                    int secondOperand = answer.top() ;
                    answer.pop() ;
 
-                   int calculatedValue = getCalculatedValue(firsOperand , secondOperand , expression[i] ) ;
+                   int calculatedValue = getCalculatedValue(secondOperand , firsOperand , expression[i] ) ;
                    answer.push(calculatedValue) ;
              }
        }
