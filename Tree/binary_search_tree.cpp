@@ -1,74 +1,64 @@
-#include<iostream>
-using namespace std ;
+#include <bits/stdc++.h>
+#define M 1000
+using namespace std;
 
-#define maxSize 10000 
-int bstArray[maxSize] ;
+int BST[M];
 
-
-void insert(int item){
-       int index = 1 ;
-       while(bstArray[index] != -maxSize){
-              if(item > bstArray[index]){
-                   index = 2 * index +  1 ;
-              }else{
-                    index = 2 * index ;
-              }
-       }
-       bstArray[index] = item ;
-
+void insertBST(int data){
+    int index = 1;
+    while(BST[index] != -M){
+        if(data < BST[index])
+            index = 2 * index;
+        else
+            index = 2 * index + 1;
+    }
+    BST[index] = data;
 }
+
 bool isFound(int item){
       int index = 1 ;
-      while(bstArray[index] != -maxSize){
-             if(bstArray[index] == item){
+      while(BST[index] != -M){
+             if(BST[index] == item){
                   return true ;
-             }else if(item > bstArray[index]){
+             }else if(item > BST[index]){
                    index = 2 * index + 1 ;
              }else {
                     index = 2 * index ;
-
              }
       }
-
       return false ;
 }
+
 int getPosition(int item){
-       int index = 1  , position = -1 ;
-       while(bstArray[index] != -maxSize){
-              if(item == bstArray[index]){
-                    position = index ;
-                    break ;
-              }else if(item > bstArray[index]){
-                    index = 2 * index + 1 ;
-              }else {
-                     index = 2 * index ;
-              }
+    int index = 1  , position = -1 ;
+    while(BST[index] != -M){
+        if(item == BST[index]){
+            position = index ;
+            break ;
+        }else if(item > BST[index]){
+            index = 2 * index + 1 ;
+        }else {
+            index = 2 * index ;
+        }
        }
-       return position ;
+    return position ;
 }
+
+void printBST(int index){
+    if(BST[index] == -M){
+        return;
+    }
+    printBST(2 * index);
+    cout << BST[index] <<'(' << index << ')' << "  ";
+    printBST(2 * index + 1);
+}
+
 int main(){
-        for(int i = 0 ; i < maxSize ; i += 1 ){
-               bstArray[i] = -maxSize ;
-        }
+    for(int i = 0 ; i < M ; i++) BST[i] = -M;
 
-        int n ;
-        cout << "Number of element : " ;
-        cin >> n ;
-        for(int i = 0 ; i < n ; i += 1){
-              int item ;
-              cin >> item ;
-              if(isFound(item)){
-                    cout << item << " is already inserted and its postion is : " << getPosition(item) << '\n' ;
-              }else{
-                   insert(item) ;
-              }
-        }
-
-        // for(int i = 1 ;  i < maxSize ; i += 1){
-        //        if(bstArray[i] != -maxSize){
-        //              cout << i << ' ' << bstArray[i] << '\n' ;
-        //        }
-        // }
-
-        return 0 ;
+    int array[] = {7,8,2,4,6,9,5,1,25,15,10};
+    for(int i = 0; i < 11; i++) insertBST(array[i]);
+    printBST(1);
+    cout << endl;
+    return 0;
 }
