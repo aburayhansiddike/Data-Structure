@@ -1,7 +1,6 @@
-#include<iostream>
-#include<stack>
+#include <bits/stdc++.h>
+using namespace std;
 
-using namespace std ;
 
 int getPrecedence(char sign){
       if(sign == '^') return 3 ;
@@ -9,12 +8,13 @@ int getPrecedence(char sign){
       else if(sign == '+' or sign == '-') return 1 ;
       return 0 ;
 }
-string getInfixToPostfix(string infix){
-        stack<char > valueStack ;
+
+string getInfexToPostfix(string infex){
+    stack<char > valueStack ;
         string postfix = "" ;
 
-        for(int i = 0 ; i < infix.size() ; i += 1){
-                char character = infix[i] ;
+        for(int i = 0 ; i < infex.size() ; i += 1){
+                char character = infex[i] ;
 
                 if(character == '(') valueStack.push(character) ;
                 else if(character == ')'){
@@ -42,9 +42,10 @@ string getInfixToPostfix(string infix){
 
         return postfix ;
 }
+
 int main(){
-      string infix = "K+L-M*N+(O^P)*W/U/V*T+Q" ;
-      string postfix = getInfixToPostfix(infix) ;
+      string infix = "5*(6+2)-2/4" ;
+      string postfix = getInfexToPostfix(infix) ;
       cout << postfix << '\n' ;
       return 0 ;
 }
